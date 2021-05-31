@@ -1,6 +1,6 @@
 package homework7;
 
-public class Cat {
+public class Cat implements Participants {
     private String catName;
     private int runDistance;
     private int jumpHeight;
@@ -10,34 +10,20 @@ public class Cat {
         this.runDistance = runDistance;
         this.jumpHeight = jumpHeight;
     }
-
-    public String getCatName() {
-        return catName;
+    @Override
+    public void run(){
+        System.out.println(this.catName + " is running " + this.getRunDistance());
     }
-
-    public int getRunDistance() {
-        return runDistance;
+    @Override
+    public void jump(){
+        System.out.println(this.catName + " is jumping " + this.getJumpHeight());
     }
-
-    public int getJumpHeight() {
-        return jumpHeight;
+    @Override
+    public int getRunDistance(){
+        return this.runDistance;
     }
-    public void runTrack(Track track){
-        if(track.getLength() <= getRunDistance()){
-            System.out.println("Cat " + getCatName() + " was able to run " + track.getLength() + " meters");
-        }
-        else{
-            System.out.println("Cat " + getCatName() + " was unable to run " + track.getLength() + "meters");
-        }
-    }
-    public void jumpBarrier(Barrier barrier){
-        if(barrier.getHeight() <= getJumpHeight()){
-            System.out.println("Cat " + getCatName() + " was able to jump over a barrier with a height "
-                    + barrier.getHeight() + " meters");
-        }
-        else{
-            System.out.println("Cat " + getCatName() + " was unable to jump over a barrier with a height "
-                    + barrier.getHeight() + " meters");
-        }
+    @Override
+    public int getJumpHeight(){
+        return this.jumpHeight;
     }
 }

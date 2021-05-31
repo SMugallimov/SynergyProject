@@ -1,6 +1,6 @@
 package homework7;
 
-public class Human {
+public class Human implements Participants {
     private String humanName;
     private int runDistance;
     private int jumpHeight;
@@ -10,35 +10,20 @@ public class Human {
         this.runDistance = runDistance;
         this.jumpHeight = jumpHeight;
     }
-    public String getHumanName(){
-        return humanName;
+    @Override
+    public void run(){
+        System.out.println(this.humanName + " is running " + this.getRunDistance());
     }
-
+    @Override
+    public void jump(){
+        System.out.println(this.humanName + " is jumping " + this.getJumpHeight());
+    }
+    @Override
     public int getRunDistance() {
-        return runDistance;
+        return this.runDistance;
     }
-
+    @Override
     public int getJumpHeight() {
-        return jumpHeight;
-    }
-    public void runTrack(Track track){
-        if(track.getLength() <= getRunDistance()){
-            System.out.println("Human " + getHumanName() + " was able to run "
-                    + track.getLength() + " meters");
-        }
-        else{
-            System.out.println("Human " + getHumanName() + " was unable to run distance "
-                    + track.getLength() + " meters");
-        }
-    }
-    public void jumpBarrier(Barrier barrier){
-        if(barrier.getHeight() <= getJumpHeight()){
-            System.out.println("Human " + getHumanName() + " was able to jump over a barrier with a height "
-                    + barrier.getHeight() + " meters");
-        }
-        else{
-            System.out.println("Human " + getHumanName() + " was unable to jump over a barrier with a height "
-                    + barrier.getHeight() + " meters");
-        }
+        return this.jumpHeight;
     }
 }

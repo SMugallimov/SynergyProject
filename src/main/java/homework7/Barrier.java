@@ -1,17 +1,14 @@
 package homework7;
 
-public class Barrier {
-    private int height;
+public abstract class Barrier {
+    private String name;
 
-    public Barrier(int height){
-        this.height = height;
+    public Barrier(String name){
+        this.name = name;
     }
+    protected abstract boolean moving(Participants participants);
 
-    public int getHeight() {
-        return height;
-    }
-
-    public void setHeight(int height) {
-        this.height = height;
+    public String getName() {
+        return name;
     }
 }
