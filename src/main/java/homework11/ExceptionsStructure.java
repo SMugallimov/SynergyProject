@@ -23,7 +23,7 @@ public class ExceptionsStructure {
 
         //IOException
         Files files = new Files();
-        files.WriteToFile();
+        files.writeToFile();
 
         //IllegalArgumentException
         try {
@@ -33,9 +33,14 @@ public class ExceptionsStructure {
             System.out.println(exp.getMessage());
         }
 
-        //Throw new Exception
-        Factorial factorial = new Factorial();
-        factorial.getFactorial(-1);
+        //Throw new IllegalArgumentException
+        try {
+            Factorial factorial = new Factorial();
+            factorial.getFactorial(-1);
+        }
+        catch (IllegalArgumentException exp){
+            System.out.println(exp.getMessage());
+        }
 
         //ArithmeticException
         Divider divider = new Divider();
