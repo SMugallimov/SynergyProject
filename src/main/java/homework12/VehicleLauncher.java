@@ -26,22 +26,22 @@ public class VehicleLauncher {
             width = Math.random() * 3;
 
             if (weight > 5 && height > 2 && length > 4 && width > 1.5) {
-                vehicles[i] = new Track(i + "TRACK", plate, speed, weight, width, height, length);
+                vehicles[i] = new Track(plate, speed, weight, width, height, length);
             } else {
-                vehicles[i] = new LightCar(i + "LIGHT VEHICLE", plate, speed, weight, width, height, length);
+                vehicles[i] = new LightCar (plate, speed, weight, width, height, length);
             }
         }
-        try {
-            for (Vehicle vehicle: vehicles) {
+        for (Vehicle vehicle: vehicles) {
+            try {
                 System.out.println(vehicle.vehicleSpeed());
                 System.out.println(vehicle.vehicleDimensions());
             }
-        }
-        catch (OverSpeedException ex) {
-            System.out.println(ex.getMessage());
-        }
-        catch (OverDimensionsException ex) {
-            System.out.println(ex.getMessage());
+            catch (OverSpeedException ex) {
+                System.out.println(ex.getMessage());
+            }
+            catch (OverDimensionsException ex) {
+                System.out.println(ex.getMessage());
+            }
         }
     }
 }

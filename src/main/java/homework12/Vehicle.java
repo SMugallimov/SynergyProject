@@ -2,7 +2,6 @@ package homework12;
 
 public class Vehicle {
 
-    private String vehicleType;
     private int plate;
     private int speed;
     private int weight;
@@ -10,8 +9,7 @@ public class Vehicle {
     private int height;
     private int length;
 
-    public Vehicle(String vehicleType, int plate, int speed, int weight, double width, int height, int length){
-        this.vehicleType = vehicleType;
+    public Vehicle(int plate, int speed, int weight, double width, int height, int length){
         this.plate = plate;
         this.speed = speed;
         this.weight = weight;
@@ -36,10 +34,6 @@ public class Vehicle {
         else {
             return "Trip is approved.";
         }
-    }
-
-    public String name(){
-        return " ";
     }
 
     public int getPlate() {
