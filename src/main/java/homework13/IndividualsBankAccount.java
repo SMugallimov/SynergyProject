@@ -12,6 +12,7 @@ public class IndividualsBankAccount {
         this.iban = iban;
         this.balance = balance;
     }
+
     public void deposit(BigDecimal value){
         BigDecimal newBalance = balance.add(value);
         System.out.println("Name: " + name + " IBAN ID " + iban + " Adding " + value + ". New balance " + newBalance);

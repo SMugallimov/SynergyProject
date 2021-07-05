@@ -7,23 +7,21 @@ public class BankAccountLauncher {
 
     public static void main(String[] args) throws Exception {
 
-//        try {
-//            IndividualsBankAccount account = new IndividualsBankAccount("Client1", 1234,
-//                    BigDecimal.valueOf(100));
-//            account.deposit(BigDecimal.valueOf(10_000.00));
-//            account.withdrawal(BigDecimal.valueOf(10_000.00));
-//        } catch (NotEnoughMoneyException ex) {
-//            System.out.println(ex.getMessage());
-//        }
-        Class<IndividualsBankAccount> individualsBankAccountClass = IndividualsBankAccount.class;
-        Field[] individualsFields = individualsBankAccountClass.getDeclaredFields();
-        for(Field field: individualsFields){
-            System.out.println(field);
-        }
-        Class<LegalsBankAccount> legalsBankAccountClass = LegalsBankAccount.class;
-        Field[] legalFields = legalsBankAccountClass.getDeclaredFields();
-        for(Field field: legalFields){
-            System.out.println(field);
-        }
+        IndividualsBankAccount individuals = new IndividualsBankAccount("Client1", 1234,
+                BigDecimal.valueOf(10_000));
+
+        Field nameIndividualField = IndividualsBankAccount.class.getDeclaredField("name");
+        nameIndividualField.setAccessible(true);
+        String name = (String) nameIndividualField.get(individuals);
+
+        Field ibanIndividualField = IndividualsBankAccount.class.getDeclaredField("iban");
+        ibanIndividualField.setAccessible(true);
+        int iban = (int)ibanIndividualField.get(individuals);
+
+        Field balanceIndividualField = IndividualsBankAccount.class.getDeclaredField("balance");
+        balanceIndividualField.setAccessible(true);
+        BigDecimal balance = (BigDecimal) balanceIndividualField.get(individuals);
+
+        individuals.deposit(BigDecimal.valueOf(100));
     }
 }
