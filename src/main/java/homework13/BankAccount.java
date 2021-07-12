@@ -12,16 +12,18 @@ public class BankAccount {
         this.iban = iban;
         this.balance = balance;
     }
-    public void deposit(BigDecimal value){
-        BigDecimal newBalance = balance.add(value);
-        System.out.println("Name: " + name + " IBAN ID " + iban + " Adding " + value + ". New balance " + newBalance);
-        balance = newBalance;
+    public void printBankAccount(BigDecimal value)
+    {
+        System.out.println("Name: " + name + " IBAN ID " + iban + " Adding " + value + ". Balance " + value);
     }
-    public void withdrawal(BigDecimal value) throws NotEnoughMoneyException{
+
+    public BigDecimal deposit(BigDecimal value){
+        BigDecimal newBalance = balance.add(value);
+        return balance = newBalance;
+    }
+    public BigDecimal withdrawal(BigDecimal value) throws NotEnoughMoneyException{
         BigDecimal newBalance = balance.subtract(value);
-        if (newBalance.compareTo(BigDecimal.ZERO) < 0) throw new NotEnoughMoneyException("Withdrawal is delained. " +
-                "Not enough money on your account!");
-        balance = newBalance;
-        System.out.println("Name: " + name + " IBAN ID " + iban + " Withdrawal " + value + ". New balance " + balance);
+        if (newBalance.compareTo(BigDecimal.ZERO) < 0) throw new NotEnoughMoneyException("Withdrawal is delained. " + "Not enough money on your account!");
+        return balance = newBalance;
     }
 }
