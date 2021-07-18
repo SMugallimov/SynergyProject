@@ -29,14 +29,15 @@ public class EmployeeRunner {
         System.out.println();
 
         ListIterator<Employee> employeeListIterator = employees.listIterator();
-        while (employeeListIterator.hasNext()){
+        for (int i = 0;  employeeListIterator.hasNext(); i++){
             employeeListIterator.next();
+            if (i % 2 ==0) {
+                employeeListIterator.remove();
+            }
         }
         for(int i = 0; employeeListIterator.hasPrevious(); i++){
             Employee reverseEmployee = employeeListIterator.previous();
-            if(i % 2 != 0) {
-                System.out.println(reverseEmployee.getFio() + reverseEmployee.getWorkAge());
-            }
+            System.out.println(reverseEmployee.getFio() + reverseEmployee.getWorkAge());
         }
     }
     public static void printEmployee(Collection<Employee> employees, int workAge){

@@ -4,6 +4,7 @@ import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.math.BigDecimal;
+import java.util.Collection;
 
 public class BankAccountLauncher {
 
@@ -11,13 +12,9 @@ public class BankAccountLauncher {
         Class<IndividualsBankAccount> individualsClass = IndividualsBankAccount.class;
 
         try{
-            IndividualsBankAccount individualsBankAccount = individualsClass.newInstance();
-            System.out.println(individualsBankAccount);
-
-            Constructor<IndividualsBankAccount> individualsConstructor = individualsClass.getConstructor();
-            IndividualsBankAccount individualsBankAccount1 = individualsConstructor.newInstance("CLIENT1", 1234,
-                    BigDecimal.valueOf(10000));
-            System.out.println(individualsBankAccount1);
+            Constructor nameConstructor = individualsClass.getConstructor(String.class, int.class, BigDecimal.class);
+            nameConstructor.setAccessible(true);
+            System.out.println(nameConstructor);
 
             Field nameField = individualsClass.getDeclaredField("name");
             nameField.setAccessible(true);
@@ -42,7 +39,7 @@ public class BankAccountLauncher {
             Method printBankAccountMethod = individualsClass.getDeclaredMethod("printBankAccount", BigDecimal.class);
             System.out.println(printBankAccountMethod);
         }
-        catch(NoSuchFieldException |InstantiationException | NoSuchMethodException ex){
+        catch(NoSuchFieldException | NoSuchMethodException ex){
             ex.printStackTrace();
         }
     }
