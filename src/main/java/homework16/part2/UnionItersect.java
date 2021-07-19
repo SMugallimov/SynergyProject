@@ -1,5 +1,6 @@
 package homework16.part2;
 
+import java.util.HashSet;
 import java.util.Random;
 import java.util.Set;
 import java.util.TreeSet;
@@ -29,13 +30,8 @@ public class UnionItersect {
         printSet("Intersect set", intersect(firstSet, secondSet));
     }
     private static Set<Integer> union(Set <Integer> firstSet, Set <Integer> secondSet) {
-        Set <Integer> unionSet = new TreeSet<Integer>();
-        for (Integer currentElement : firstSet) {
-            unionSet.add(currentElement);
-        }
-        for (Integer currentElement : secondSet) {
-            unionSet.add(currentElement);
-        }
+        Set <Integer> unionSet = new HashSet<>(firstSet);
+        unionSet.addAll(secondSet);
         return unionSet;
     }
     private static void printSet(String string, Set <Integer> set) {

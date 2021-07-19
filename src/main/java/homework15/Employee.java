@@ -1,7 +1,5 @@
 package homework15;
 
-import java.util.Collection;
-
 public class Employee {
     private String fio;
     private int workAge;
