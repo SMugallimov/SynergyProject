@@ -3,12 +3,10 @@ package homework16.part2;
 import java.util.HashSet;
 import java.util.Random;
 import java.util.Set;
-import java.util.TreeSet;
 
 public class UnionItersect {
     public static void main(String[] args) {
-
-        Set <Integer> firstSet = new TreeSet <Integer> ();
+        Set <Integer> firstSet = new HashSet<>();
         int counter1 = 0;
         int counter2 = 10;
         Random rnd = new Random();
@@ -18,7 +16,7 @@ public class UnionItersect {
         }
         printSet("First set", firstSet);
 
-        Set <Integer> secondSet = new TreeSet <Integer> ();
+        Set <Integer> secondSet = new HashSet<>();
         while(counter2 < 20){
             secondSet.add(rnd.nextInt(20) + 1);
             counter2++;
@@ -44,7 +42,7 @@ public class UnionItersect {
         }
     }
     private static Set <Integer> intersect(Set <Integer> firstSet, Set <Integer> secondSet) {
-        Set <Integer> intersectSet = new TreeSet <Integer> ();
+        Set <Integer> intersectSet = new HashSet<>();
         for (Integer firstSetElement : firstSet) {
             for (Integer secondSetElement : secondSet) {
                 if (firstSetElement == secondSetElement) {
