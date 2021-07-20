@@ -1,46 +1,35 @@
 package homework13;
 
 import java.lang.reflect.Constructor;
-import java.lang.reflect.Field;
-import java.lang.reflect.Method;
+import java.lang.reflect.InvocationTargetException;
 import java.math.BigDecimal;
-import java.util.Collection;
 
 public class BankAccountLauncher {
 
-    public static void main(String[] args) throws Exception{
-        Class<IndividualsBankAccount> individualsClass = IndividualsBankAccount.class;
+    public static void main(String[] args) throws NoSuchMethodException,
+            SecurityException, InstantiationException, IllegalAccessException,
+            IllegalArgumentException, InvocationTargetException {
 
-        try{
-            Constructor nameConstructor = individualsClass.getConstructor(String.class, int.class, BigDecimal.class);
-            nameConstructor.setAccessible(true);
-            System.out.println(nameConstructor);
+        Class<IndividualsBankAccount> individualsBankAccountClass = IndividualsBankAccount.class;
+        Constructor<?> individualsConstructor = individualsBankAccountClass.getConstructor
+                (String.class,int.class,BigDecimal.class);
 
-            Field nameField = individualsClass.getDeclaredField("name");
-            nameField.setAccessible(true);
-            System.out.println(nameField);
+        IndividualsBankAccount individualsBankAccount1 = (IndividualsBankAccount) individualsConstructor.newInstance(
+                "Individual Account_1", 1234, BigDecimal.valueOf(10_000));
+        individualsBankAccount1.printBankAccount();
 
-            Field ibanField = individualsClass.getDeclaredField("iban");
-            ibanField.setAccessible(true);
-            System.out.println(ibanField);
+        System.out.println();
 
-            Field balanceField = individualsClass.getDeclaredField("balance");
-            balanceField.setAccessible(true);
-            System.out.println(balanceField);
+        Class<LegalsBankAccount> legalsBankAccountClass = LegalsBankAccount.class;
+        Constructor<?> legalsConstructor = legalsBankAccountClass.getConstructor
+                (String.class, int.class, BigDecimal.class);
 
-            Method depositMethod = individualsClass.getDeclaredMethod("deposit", BigDecimal.class);
-            depositMethod.invoke(individualsClass, 100);
-            System.out.println(depositMethod.getReturnType());
+        LegalsBankAccount legalsBankAccount1 = (LegalsBankAccount) legalsConstructor.newInstance
+                ("Legal Account_1", 5678, BigDecimal.valueOf(20_000));
+        legalsBankAccount1.printBankAccount();
 
-            Method withdrawalMethod = individualsClass.getDeclaredMethod("withdrawal", BigDecimal.class);
-            withdrawalMethod.invoke(individualsClass, 200);
-            System.out.println(withdrawalMethod.getReturnType());
+        legalsBankAccount1.deposit(BigDecimal.valueOf(100));
+        legalsBankAccount1.printBankAccount();
 
-            Method printBankAccountMethod = individualsClass.getDeclaredMethod("printBankAccount", BigDecimal.class);
-            System.out.println(printBankAccountMethod);
-        }
-        catch(NoSuchFieldException | NoSuchMethodException ex){
-            ex.printStackTrace();
-        }
     }
 }
