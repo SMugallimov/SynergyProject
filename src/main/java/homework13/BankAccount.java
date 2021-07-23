@@ -23,7 +23,7 @@ public class BankAccount {
     }
 
     @Blocked
-    public BigDecimal withdrawal(BigDecimal value) throws NotEnoughMoneyException{
+    public BigDecimal withdrawal(BigDecimal value) throws Exception{
         BigDecimal newBalance = balance.subtract(value);
         if (newBalance.compareTo(BigDecimal.ZERO) < 0) {
             throw new NotEnoughMoneyException("Withdrawal is declined. Not enough money on your account!");
