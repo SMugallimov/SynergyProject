@@ -1,11 +1,13 @@
 package homework13;
 
 import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
 import java.math.BigDecimal;
 
 public class BankAccountLauncher {
 
-    public static void main(String[] args) throws Exception {
+    public static void main(String[] args) throws NotEnoughMoneyException, NoSuchMethodException,
+            InvocationTargetException, InstantiationException, IllegalAccessException {
 
         Class<IndividualsBankAccount> individualsBankAccountClass = IndividualsBankAccount.class;
         Constructor<?> individualsConstructor = individualsBankAccountClass.getConstructor
