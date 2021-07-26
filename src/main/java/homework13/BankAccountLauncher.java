@@ -6,7 +6,7 @@ import java.math.BigDecimal;
 
 public class BankAccountLauncher {
 
-    public static void main(String[] args) throws NotEnoughMoneyException, NoSuchMethodException,
+    public static void main(String[] args) throws NoSuchMethodException,
             InvocationTargetException, InstantiationException, IllegalAccessException {
 
         Class<IndividualsBankAccount> individualsBankAccountClass = IndividualsBankAccount.class;
