@@ -14,17 +14,10 @@ public class BankAccountRunner {
         IndividualsBankAccount individualsBankAccount1 = (IndividualsBankAccount) individualsConstructor.newInstance(
                 "Individual Account_1", 1234, BigDecimal.valueOf(10_000));
 
-        Class[]cs = {Blocked.class};
-        ClassLoader classLoader = Blocked.class.getClassLoader();
-        InvocationHandler invocationHandler = new InvocationHandler() {
-            @Override
-            public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
-                System.out.println("The transaction is blocked.");
-                return null;
-            }
-        };
+        ClassLoader individualClassLoader = individualsBankAccount1.getClass().getClassLoader();
+        Class[] interfaces = individualsBankAccount1.getClass().getInterfaces();
+        BankAccount proxyIndividual = (BankAccount) Proxy.newProxyInstance(individualClassLoader,
+                interfaces, new ProxyBankAccount(individualsBankAccount1));
 
-        Blocked blocked = (Blocked) Proxy.newProxyInstance(classLoader, cs, invocationHandler);
-        blocked.value();
     }
 }
