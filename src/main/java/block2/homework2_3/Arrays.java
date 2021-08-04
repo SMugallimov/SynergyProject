@@ -1,4 +1,4 @@
-package homework11;
+package block2.homework2_3;
 
 public class Arrays {
     public static void printArray(int[] array){

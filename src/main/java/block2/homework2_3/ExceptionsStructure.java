@@ -1,7 +1,4 @@
-package homework11;
-
-import java.io.FileWriter;
-import java.io.IOException;
+package block2.homework2_3;
 
 public class ExceptionsStructure {
     public static void main(String[] args) {
