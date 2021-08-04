@@ -1,4 +1,4 @@
-package homework8;
+package block1.homework1_8;
 
 public enum Degrees {
     C_F(new CelsiusToFahrenheit()), F_C(new FahrenheitToCelcius()),

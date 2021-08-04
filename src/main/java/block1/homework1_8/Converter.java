@@ -1,6 +1,4 @@
-package homework8;
-
-import java.util.Scanner;
+package block1.homework1_8;
 
 public interface Converter {
     double CDEG_FDEG = 32;
