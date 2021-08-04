@@ -1,4 +1,4 @@
-package homework19;
+package block3.homework3_5;
 
 import java.util.*;
 import java.util.function.Function;
