@@ -1,4 +1,4 @@
-package homework6;
+package block1.homework1_6;
 
 public class Animal {
     public void voice() {

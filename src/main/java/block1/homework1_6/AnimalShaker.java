@@ -1,4 +1,4 @@
-package homework6;
+package block1.homework1_6;
 
 public class AnimalShaker {
     public static void main(String[] args) {
