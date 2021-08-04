@@ -1,4 +1,4 @@
-package homework5;
+package block1.homework1_5;
 
 public class Matrix {
     private int rowLength;
