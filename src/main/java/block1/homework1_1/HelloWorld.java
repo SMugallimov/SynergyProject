@@ -1,4 +1,4 @@
-package homework1;
+package block1.homework1_1;
 
 public class HelloWorld {
     public static void main(String[] args) {
