@@ -1,4 +1,4 @@
-package homework12;
+package block2.homework2_4;
 
 import java.util.Random;
 
