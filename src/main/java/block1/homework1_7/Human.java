@@ -1,4 +1,4 @@
-package homework7;
+package block1.homework1_7;
 
 public class Human implements Participants {
     private String humanName;
