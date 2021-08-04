@@ -1,4 +1,4 @@
-package homework3;
+package block1.homework1_3;
 
 public class SimpleNumbers {
     public static void main(String[] args) {
