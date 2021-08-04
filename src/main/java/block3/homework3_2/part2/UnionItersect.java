@@ -1,4 +1,4 @@
-package homework16.part2;
+package block3.homework3_2.part2;
 
 import java.util.HashSet;
 import java.util.Random;

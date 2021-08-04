@@ -1,4 +1,4 @@
-package homework16.part1;
+package block3.homework3_2.part1;
 
 public class Employee {
     private String name;
