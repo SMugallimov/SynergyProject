@@ -1,9 +1,8 @@
 package block2.homework2_8;
 
-
 import java.math.BigDecimal;
 
-public class BankAccount {
+public class BankAccount implements Account{
     private BigDecimal balance;
     private int iban;
     private String name;
@@ -13,6 +12,7 @@ public class BankAccount {
         this.iban = iban;
         this.balance = balance;
     }
+    @Override
     public void printBankAccount() {
         System.out.println("Name: " + this.name + "\nIBAN ID " + this.iban + "\nBalance " + this.balance);
     }
