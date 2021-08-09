@@ -25,12 +25,19 @@ public class BankAccountRunner {
         Account individualsBlocked = (Account) Proxy.newProxyInstance(individualsBankAccount1.getClass().getClassLoader(),
                 individualsBankAccount1.getClass().getSuperclass().getInterfaces(), new ProxyBankAccount(individualsBankAccount1));
 
-        individualsBlocked.deposit(BigDecimal.valueOf(100));
-
         Account legalsBlocked = (Account) Proxy.newProxyInstance(legalsBankAccount1.getClass().getClassLoader(),
                 legalsBankAccount1.getClass().getSuperclass().getInterfaces(), new ProxyBankAccount(legalsBankAccount1));
 
-        legalsBlocked.withdrawal(BigDecimal.valueOf(200));
+        try {
+            individualsBlocked.deposit(BigDecimal.valueOf(100));
+            individualsBlocked.printBankAccount();
+
+            legalsBlocked.withdrawal(BigDecimal.valueOf(200));
+            legalsBlocked.printBankAccount();
+        }
+        catch (BlockedTransactions | NotEnoughMoneyException ex){
+            System.out.println(ex.getMessage());
+        }
 
     }
 }
