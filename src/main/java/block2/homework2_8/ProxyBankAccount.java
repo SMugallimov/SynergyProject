@@ -16,11 +16,9 @@ public class ProxyBankAccount implements InvocationHandler {
         Class clazz = BankAccount.class;
         Method[] methods = clazz.getMethods();
 
-        if(methods !=null){
-            for(Method m : methods){
-                if (m.isAnnotationPresent(Blocked.class)) {
-                    throw new BlockedTransactions("Transaction is blocked");
-                }
+        for(Method m : methods){
+            if (m.isAnnotationPresent(Blocked.class)) {
+                throw new BlockedTransactions("Transaction is blocked");
             }
         }
         return  method.invoke(bankAccount, args);
