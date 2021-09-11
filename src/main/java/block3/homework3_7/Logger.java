@@ -1,48 +1,34 @@
 package block3.homework3_7;
 
 import lombok.RequiredArgsConstructor;
+import lombok.SneakyThrows;
 
 import java.io.*;
 import java.util.Date;
 
+enum LogLevel {
+    ERROR,
+    INFO,
+    WARN,
+    DEBUG,
+    TRACE
+}
 @RequiredArgsConstructor
 public class Logger {
-    private String logMsg;
-    private String logLvl;
 
-    public void writeToFile(String logLvl) {
-        try(FileWriter fileWriter = new FileWriter("E:/log.txt", true)){
-        Date date = new Date();
-        switch (logLvl) {
-            case "ERROR":
-                fileWriter.write(date + " " + logLvl + " Communication error\n");
-                break;
-            case "INFO":
-                fileWriter.write(date + " " + logLvl + " Successfully connected to EIS Simulator\n");
-                break;
-            case "WARN":
-                fileWriter.write(date + " " + logLvl + " Memory leakage" + '\n');
-            case "DEBUG":
-                fileWriter.write(date + " " + logLvl + " Check your variables. Create breakpoint\n");
-                break;
-            case "TRACE":
-                fileWriter.write(date + " " + logLvl + " While attempting to close the connection to EIS Simulator,\n" +
-                        "EISS API reported that the server had already closed the connection\n" +
-                        "previously due to inactivity. Ignoring because connection was closed all the same\n");
-        }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+    private FileWriter fileWriter;
+
+    @SneakyThrows
+    public Logger(String logFilePath) {
+        this.fileWriter = new FileWriter("E:/log.txt", true);
     }
-    public void readFromFile(){
-        String text;
-        try(BufferedReader bufferedReader = new BufferedReader(new FileReader("E:/log.txt"))){
-
-            while ((text = bufferedReader.readLine()) != null){
-                System.out.println(text);
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+    @SneakyThrows
+    public void writeLog(LogLevel logLvl, String logMsg) {
+        Date date = new Date();
+        this.fileWriter.write(date + " " + Thread.currentThread().getId() + " " + logLvl + " " + logMsg + '\n');
+    }
+    @SneakyThrows
+    public void closeLog() {
+        this.fileWriter.close();
     }
 }
