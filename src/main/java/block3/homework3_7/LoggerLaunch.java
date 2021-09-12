@@ -19,8 +19,7 @@ public class LoggerLaunch {
 
         Runnable writeLog = () -> {
             try {
-            while (System.currentTimeMillis() < endStart) {
-                for (int i = 0; i < 3; i++) {
+                while (System.currentTimeMillis() < endStart) {
                     logger.writeLog(LogLevel.ERROR, "Some error message");
                     logger.writeLog(LogLevel.INFO, "Some info message");
                     logger.writeLog(LogLevel.DEBUG, "Some debug message");
@@ -28,7 +27,6 @@ public class LoggerLaunch {
                     logger.writeLog(LogLevel.TRACE, "Some trace message");
                     Thread.sleep(5000);
                 }
-            }
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
