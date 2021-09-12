@@ -14,33 +14,36 @@ public class LoggerLaunch {
 
         Logger logger = new Logger("E:/log.txt");
 
-//        long timeStart = System.currentTimeMillis();
-//        long endStart = timeStart + 60000L;
+        long timeStart = System.currentTimeMillis();
+        long endStart = timeStart + 60000L;
 
         Runnable writeLog = () -> {
-            synchronized (logger) {
-                try {
-//                    while(System.currentTimeMillis() < endStart) {
-                    for(int i = 0; i < 5; i++){
-                        logger.writeLog(getLogSimulation(), "Some logger message");
-                        Thread.sleep(5000);
-                    }
-
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
+            try {
+            while (System.currentTimeMillis() < endStart) {
+                for (int i = 0; i < 3; i++) {
+                    logger.writeLog(LogLevel.ERROR, "Some error message");
+                    logger.writeLog(LogLevel.INFO, "Some info message");
+                    logger.writeLog(LogLevel.DEBUG, "Some debug message");
+                    logger.writeLog(LogLevel.WARN, "Some warning message");
+                    logger.writeLog(LogLevel.TRACE, "Some trace message");
+                    Thread.sleep(5000);
                 }
+            }
+            } catch (InterruptedException e) {
+                e.printStackTrace();
             }
         };
         Thread th1 = new Thread(writeLog);
         th1.start();
-        th1.join();
 
         Thread th2 = new Thread(writeLog);
         th2.start();
-        th2.join();
 
         Thread th3 = new Thread(writeLog);
         th3.start();
+
+        th1.join();
+        th2.join();
         th3.join();
 
         logger.closeLog();

@@ -20,7 +20,7 @@ public class Logger {
 
     @SneakyThrows
     public Logger(String logFilePath) {
-        this.fileWriter = new FileWriter("E:/log.txt", true);
+        this.fileWriter = new FileWriter(logFilePath, true);
     }
     @SneakyThrows
     public void writeLog(LogLevel logLvl, String logMsg) {
