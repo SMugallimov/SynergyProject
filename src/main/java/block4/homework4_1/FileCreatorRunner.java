@@ -8,20 +8,22 @@ import java.io.FileReader;
 import java.io.FileWriter;
 
 public class FileCreatorRunner {
+    @SneakyThrows
     public static void main(String[] args) {
 
         FileCreator fileCreator = new FileCreator("E:/file.txt");
 
         for(int i = 0; i < 4; i++) {
             fileCreator.writeFile();
+            Thread.sleep(5000);
         }
         fileCreator.fileWriterClose();
 
-        readFromFile();
+        createNewFile();
 
     }
     @SneakyThrows
-    public static void readFromFile(){
+    public static void createNewFile(){
         String text;
         int fileCounter = 1;
         try(BufferedReader bufferedReader = new BufferedReader(new FileReader("E:/file.txt"))){
