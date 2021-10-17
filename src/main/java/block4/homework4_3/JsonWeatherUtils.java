@@ -49,9 +49,10 @@ public class JsonWeatherUtils {
     }
 
     // метод для создания объектя URL из указанной в параметре строки
-    public static URL createUrl(String link){
+    public static URL createUrl(){
         try{
-            return new URL(link);
+            return new URL("http://api.openweathermap.org/data/2.5/weather?q=Moscow, ru" +
+                    "&units=metric&appid=xxxx");
         }
         catch (MalformedURLException e) {
             e.printStackTrace();

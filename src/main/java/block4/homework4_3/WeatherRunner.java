@@ -3,12 +3,9 @@ package block4.homework4_3;
 import java.net.URL;
 
 public class WeatherRunner {
-    public static final String WEATHER_URL =
-            "http://api.openweathermap.org/data/2.5/weather?q=Moscow, ru" +
-                    "&units=metric&appid=xxxx";
 
     public static void main(String[] args) {
-        URL url = JsonWeatherUtils.createUrl(WEATHER_URL);
+        URL url = JsonWeatherUtils.createUrl();
         String result = JsonWeatherUtils.parseUrl(url);
         System.out.println("JSON:\n" + result);
         System.out.println();
