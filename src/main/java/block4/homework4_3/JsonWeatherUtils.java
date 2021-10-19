@@ -1,13 +1,12 @@
 package block4.homework4_3;
 
+import lombok.SneakyThrows;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.JSONValue;
 import org.json.simple.parser.ParseException;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
+import java.io.*;
 import java.net.MalformedURLException;
 import java.net.URL;
 
@@ -48,11 +47,22 @@ public class JsonWeatherUtils {
         }
     }
 
+    // метод для считывания URL с файла
+    @SneakyThrows
+    public static String getUrl(){
+        String text;
+        try(BufferedReader bufferedReader = new BufferedReader(new FileReader("E:/url.txt"))){
+            while((text = bufferedReader.readLine()) != null){
+                return text;
+            }
+        }
+        return "";
+    }
+
     // метод для создания объектя URL из указанной в параметре строки
     public static URL createUrl(){
         try{
-            return new URL("http://api.openweathermap.org/data/2.5/weather?q=Moscow, ru" +
-                    "&units=metric&appid=xxxx");
+            return new URL(getUrl());
         }
         catch (MalformedURLException e) {
             e.printStackTrace();
